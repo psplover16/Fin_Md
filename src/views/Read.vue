@@ -34,10 +34,14 @@ onMounted(async () => {
     if (!response.ok) throw new Error('Not Found')
     
     const mdText = await response.text()
-    // 將 Markdown 轉為 HTML
-    htmlContent.value = marked(mdText)
+    // 1. 將 Markdown 轉為 HTML
+    const rawHtml = marked(mdText)
     
-    // 等待 Vue 將 HTML 渲染到畫面上後，觸發 highlight.js 幫程式碼上色
+    // 2. 動態修正圖片路徑（相容本地開發與 GitHub Pages 子路徑）
+    const cleanBase = baseUrl === '/' ? '' : baseUrl.replace(/\/$/, '')
+    htmlContent.value = rawHtml.replace(/src="\//g, `src="${cleanBase}/`)
+    
+    // 3. 等待 Vue 將 HTML 渲染到畫面上後，觸發 highlight.js 幫程式碼上色
     await nextTick()
     document.querySelectorAll('pre code').forEach((block) => {
       hljs.highlightElement(block)
