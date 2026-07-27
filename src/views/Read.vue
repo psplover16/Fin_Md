@@ -29,7 +29,8 @@ onMounted(async () => {
   const articleId = route.params.id
   try {
     // 從 public/md/ 抓取對應的檔案
-    const response = await fetch(`/md/${articleId}.md`)
+    const baseUrl = import.meta.env.BASE_URL
+    const response = await fetch(`${baseUrl}md/${articleId}.md`)
     if (!response.ok) throw new Error('Not Found')
     
     const mdText = await response.text()
