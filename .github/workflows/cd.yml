@@ -1,0 +1,54 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure deployment target
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == "dev" ]]; then
+            echo "VITE_APP_BASE_PATH=/Fin_Md/staging/" >> "$GITHUB_ENV"
+            echo "VITE_APP_START_URL=/Fin_Md/staging/" >> "$GITHUB_ENV"
+            echo "PUBLISH_TARGET=staging" >> "$GITHUB_ENV"
+          else
+            echo "VITE_APP_BASE_PATH=/Fin_Md/" >> "$GITHUB_ENV"
+            echo "VITE_APP_START_URL=/Fin_Md/" >> "$GITHUB_ENV"
+            echo "PUBLISH_TARGET=production" >> "$GITHUB_ENV"
+          fi
+
+      - name: Build site
+        run: npm run build
+
+      - name: Publish to gh-pages
+        run: node scripts/publishPages.mjs
+        env:
+          PUBLISH_TARGET: ${{ env.PUBLISH_TARGET }}
