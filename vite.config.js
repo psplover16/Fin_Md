@@ -19,12 +19,12 @@ export default defineConfig({
         // 注意：實務上需要準備 icon，否則 PWA 安裝會有警告
         icons: [
           {
-            src: 'pwa-192x192.png',
+            src: 'icon-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'icon-512.png',
             sizes: '512x512',
             type: 'image/png'
           }
