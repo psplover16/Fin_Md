@@ -9,6 +9,9 @@
       <li>
         <router-link to="/read/digitalLogic">數位邏輯</router-link>  
       </li>
+      <li>
+        <router-link to="/read/sqlTransaction">資料庫-交易</router-link>  
+      </li>
     </ul>
   </div>
 </template>
