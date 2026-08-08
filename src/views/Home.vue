@@ -27,7 +27,7 @@
         <router-link to="/read/sql_Intro">4-5. SQL種類</router-link>  
       </li>
       
-      <!-- <li>
+      <li>
         <router-link to="/read/sql_Create">4-6. 建表</router-link>  
       </li>
       <li>
@@ -38,7 +38,7 @@
       </li>
       <li>
         <router-link to="/read/sql_join">4-9. 多表連接</router-link>  
-      </li> -->
+      </li>
 
       <li>
         <router-link to="/read/sqlTransaction">交易</router-link>  
