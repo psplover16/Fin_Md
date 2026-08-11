@@ -39,14 +39,15 @@
       <li>
         <router-link to="/read/sql_join">4-9. 多表連接</router-link>  
       </li>
-
       <li>
-        <router-link to="/read/sqlTransaction">交易</router-link>  
+        <router-link to="/read/sqlTransaction">4-10. 交易</router-link>  
       </li>
       <li>
-        <router-link to="/read/sqlTransaction _simple">交易-easy</router-link>  
+        <router-link to="/read/sqlTransaction _simple">4-10. 交易-easy</router-link>  
       </li>
-
+      <li>
+        <router-link to="/read/noSql">4-11. noSql</router-link>  
+      </li>
 
     </ul>
   </div>
