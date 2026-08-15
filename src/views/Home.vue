@@ -9,7 +9,22 @@
       <li>
         <router-link to="/read/basicComputer_page_frame">計算機概論-分頁與分段</router-link>      
       </li>
+      <li>
+        <router-link to="/read/basicComputer_.APIE">計算機概論-APIE</router-link>      
+      </li>
     </ul>
+
+    <ul>
+      <li>
+        <router-link to="/read/basicComputer_BIGO">計算機概論-BIGO</router-link>      
+      </li>
+      <li>
+        <router-link to="/read/basicComputer_BIGOCODE">計算機概論-BIGOCODE</router-link>      
+      </li>
+    </ul>
+
+
+
     <ul>
       <li>
         <router-link to="/read/digitalLogic">數位邏輯</router-link>  
