@@ -12,6 +12,9 @@
       <li>
         <router-link to="/read/basicComputer_.APIE">計算機概論-APIE</router-link>      
       </li>
+      <li>
+        <router-link to="/read/basicComputer_hashBucket">計算機概論-雜湊表</router-link>      
+      </li>      
     </ul>
 
     <ul>
