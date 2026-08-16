@@ -14,7 +14,13 @@
       </li>
       <li>
         <router-link to="/read/basicComputer_hashBucket">計算機概論-雜湊表</router-link>      
-      </li>      
+      </li>
+       <li>
+        <router-link to="/read/basicComputer_array">計算機概論-陣列</router-link>      
+      </li>    
+       <li>
+        <router-link to="/read/basicComputer_tree">計算機概論-樹</router-link>      
+      </li>    
     </ul>
 
     <ul>
