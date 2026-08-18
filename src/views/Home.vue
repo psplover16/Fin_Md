@@ -23,8 +23,7 @@
       </li>    
        <li>
         <router-link to="/read/basicComputer_AVLtree">計算機概論-AVL樹、紅黑樹</router-link>      
-      </li>    
-      
+      </li>          
     </ul>
 
     <ul>
@@ -41,6 +40,9 @@
     <ul>
       <li>
         <router-link to="/read/digitalLogic">數位邏輯</router-link>  
+      </li>
+      <li>
+        <router-link to="/read/digitalLogic_SOPPOS">數位邏輯-真值表轉電路與卡諾圖實操</router-link>  
       </li>
     </ul>
     <ul>
