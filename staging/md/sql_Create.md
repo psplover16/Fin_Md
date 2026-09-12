@@ -1,5 +1,11 @@
 # 建表：
 
+### 語法命名規則
+1. 全部大寫 (UPPERCASE)：專留給「SQL 保留字與函數」
+2. 全部小寫 ＋ 底線 (snake_case)：專留給「自訂的表名與欄位」
+3. 嚴格區分大小寫：專留給「引號內的字串值」
+
+
 ### 關於 CHAR 與 VARCHAR
 1. 資料短，`CHAR` 省空間；資料長，`VARCHAR` 省空間。
 2. 更新資料，`CHAR` 原地更新，速度極快；`VARCHAR` 則可能會將整筆資料搬到合適的儲存位置，需要動整筆資料。
@@ -17,6 +23,7 @@
 | **VARCHAR(n)** | 變長文字 | 最多 `n` 個字元，存多長就佔多長 |
 | **DATE / DATETIME** | 日期 / 日期＋時間 | 格式：`YYYY-MM-DD` / `YYYY-MM-DD HH:MM:SS`<br>大小：3bytes / 8bytes<br><br>• 把時間塞進 `DATE`，會自動把時間截掉<br>• 把純日期塞進 `DATETIME`，會自動把時間補零<br>• 實務常用 `DEFAULT CURRENT_TIMESTAMP` 讓預設時間為當下時間 |
 
+* NULL，代表不存在；尚未填寫，代表"未知"
 ---
 
 ### 5. 約束
@@ -65,12 +72,15 @@ CREATE TABLE student_profile (
   name        VARCHAR(20)  NOT NULL,                             
   created_at  DATETIME      DEFAULT CURRENT_TIMESTAMP,
 
+  -- 複合主鍵 (Composite PK): 
+  -- 當主鍵由兩個欄位組成時，絕對不能寫在欄位旁邊，必須寫在最後面！
+  PRIMARY KEY (student_id, created_at),
+
   -- 【DEFAULT (預設值約束)】: 如果新增資料時沒有特別填寫這個欄位，系統會自動幫它填入 'F'。
   -- 【CHECK (檢查約束)】: 限定這個欄位能被輸入的值。這裡限制只能輸入 'M' 或 'F'，輸入其他字元會被資料庫拒絕。
   -- 檢查約束 放的 其實就是 WHERE的語法
   gender      CHAR(1)      DEFAULT 'F' CHECK (gender IN ('M', 'F')),
   score       DECIMAL(5,2) DEFAULT 0 CHECK (score BETWEEN 0 AND 100),
-
 
   -- 【FOREIGN KEY (外來鍵約束)】: 建立兩張表格之間的關聯。
   --  本表的 `student_id` 欄位，其值必須存在於另一張父表 `student` 的 `id` 欄位中，確保「沒有憑空捏造學生」。
@@ -83,5 +93,19 @@ CREATE TABLE student_profile (
 ```
 
 ---
-*** CHAR VS VARCHAR
-*** NULL，代表不存在；尚未填寫，代表"未知"
+### 8.索引
+
+```sql
+-- 針對 Member 的email欄位，創建 名稱為 idx_member_email 的索引
+CREATE INDEX idx_member_email ON Member (Email); 
+-- 針對 Member 的email欄位，該欄位的資料值不可以重複，創建 名稱為 idx_member_email 的索引
+CREATE UNIQUE INDEX idx_member_email ON Member (Email);
+-- 最左前綴法則：只要你的搜尋條件有包含「最左邊」的那個欄位，就會加速
+-- 先用 LastName 進行絕對排序，當遇到 LastName 相同的資料時，再用 FirstName 進行內部排序（小分類）
+CREATE INDEX idx_fullname ON Member (LastName, FirstName);
+```
+
+* 二元搜尋法，O(logN)
+* 原則上，在 Table 創建之後才能添加索引。
+* 但在 CREATE TABLE 裡設定 PRIMARY KEY（主鍵）或 UNIQUE（唯一限制）時，資料庫引擎會「自動」在建表時，連索引一同建立。
+
