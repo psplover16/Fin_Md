@@ -4,86 +4,119 @@
     <ul>
       <!-- 這裡的 'test' 對應 public/md/test.md -->
       <li>
-        <router-link to="/read/basicComputer">計算機概論</router-link>      
+        <router-link to="/read/basicComputer">計算機概論</router-link>
       </li>
       <li>
-        <router-link to="/read/basicComputer_page_frame">計算機概論-分頁與分段</router-link>      
+        <router-link to="/read/basicComputer_page_frame"
+          >計算機概論-分頁與分段</router-link
+        >
       </li>
       <li>
-        <router-link to="/read/basicComputer_.APIE">計算機概論-APIE</router-link>      
+        <router-link to="/read/basicComputer_.APIE"
+          >計算機概論-APIE</router-link
+        >
       </li>
       <li>
-        <router-link to="/read/basicComputer_hashBucket">計算機概論-雜湊表</router-link>      
+        <router-link to="/read/basicComputer_hashBucket"
+          >計算機概論-雜湊表</router-link
+        >
       </li>
-       <li>
-        <router-link to="/read/basicComputer_array">計算機概論-陣列</router-link>      
-      </li>    
-       <li>
-        <router-link to="/read/basicComputer_tree">計算機概論-樹</router-link>      
-      </li>    
-       <li>
-        <router-link to="/read/basicComputer_AVLtree">計算機概論-AVL樹、紅黑樹</router-link>      
-      </li>          
+      <li>
+        <router-link to="/read/basicComputer_array"
+          >計算機概論-陣列</router-link
+        >
+      </li>
+      <li>
+        <router-link to="/read/basicComputer_tree">計算機概論-樹</router-link>
+      </li>
+      <li>
+        <router-link to="/read/basicComputer_AVLtree"
+          >計算機概論-AVL樹、紅黑樹</router-link
+        >
+      </li>
     </ul>
 
     <ul>
       <li>
-        <router-link to="/read/basicComputer_BIGO">計算機概論-BIGO</router-link>      
+        <router-link to="/read/basicComputer_BIGO">計算機概論-BIGO</router-link>
       </li>
       <li>
-        <router-link to="/read/basicComputer_BIGOCODE">計算機概論-BIGOCODE</router-link>      
+        <router-link to="/read/basicComputer_BIGOCODE"
+          >計算機概論-BIGOCODE</router-link
+        >
       </li>
     </ul>
 
-
-
     <ul>
       <li>
-        <router-link to="/read/digitalLogic">數位邏輯</router-link>  
+        <router-link to="/read/digitalLogic">數位邏輯</router-link>
       </li>
       <li>
-        <router-link to="/read/digitalLogic_SOPPOS">數位邏輯-真值表轉電路與卡諾圖實操</router-link>  
+        <router-link to="/read/digitalLogic_SOPPOS"
+          >數位邏輯-真值表轉電路與卡諾圖實操</router-link
+        >
       </li>
     </ul>
     <ul>
       <li>
-        <router-link to="/read/sql_ANSI">4-1.ANSI SPARC 及資料庫種類</router-link>  
+        <router-link to="/read/sql_ANSI"
+          >4-1.ANSI SPARC 及資料庫種類</router-link
+        >
       </li>
       <li>
-        <router-link to="/read/sql_basic">4-2. 基礎及阿姆斯狀公理</router-link>  
+        <router-link to="/read/sql_basic">4-2. 基礎及阿姆斯狀公理</router-link>
       </li>
       <li>
-        <router-link to="/read/sql_designProcess">4-3. 資料庫設計流程</router-link>  
+        <router-link to="/read/sql_designProcess"
+          >4-3. 資料庫設計流程</router-link
+        >
       </li>
       <li>
-        <router-link to="/read/sql_ObjectType">4-4. 資料庫物件種類</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/sql_Intro">4-5. SQL種類</router-link>  
-      </li>
-      
-      <li>
-        <router-link to="/read/sql_Create">4-6. 建表</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/sql_CRUD">4-7. CRUD</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/sql_normal">4-8. 常用函數</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/sql_join">4-9. 多表連接</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/sqlTransaction">4-10. 交易</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/sqlTransaction _simple">4-10. 交易-easy</router-link>  
-      </li>
-      <li>
-        <router-link to="/read/noSql">4-11. noSql</router-link>  
+        <router-link to="/read/sql_Intro">4-5. SQL種類</router-link>
       </li>
 
+      <li>
+        <router-link to="/read/sql_normal">4-8. 常用函數</router-link>
+      </li>
+      <li>
+        <router-link to="/read/sqlTransaction">4-10. 交易</router-link>
+      </li>
+      <li>
+        <router-link to="/read/sqlTransaction _simple"
+          >4-10. 交易-easy</router-link
+        >
+      </li>
+      <li>
+        <router-link to="/read/noSql">4-11. noSql</router-link>
+      </li>
+    </ul>
+
+    <ul>
+      <li style="color: red">
+        <router-link to="/read/sql_designProcessDO"
+          >4-3. 資料庫設計實操大綱</router-link
+        >
+      </li>
+      <li>
+        <router-link to="/read/sql_Create">4-6. 建表</router-link>
+      </li>
+      <li>
+        <router-link to="/read/sql_designProcessWorkfolow"
+          >4-3-3. 資料庫設計實操</router-link
+        >
+      </li>
+      ----
+      <li>
+        <router-link to="/read/sql_ObjectType"
+          >4-4. Table/View/Index/Stored Procedure/Trigger</router-link
+        >
+      </li>
+      <li>
+        <router-link to="/read/sql_CRUD">4-7. CRUD</router-link>
+      </li>
+      <li>
+        <router-link to="/read/sql_join">4-9. 多表連接</router-link>
+      </li>
     </ul>
   </div>
 </template>

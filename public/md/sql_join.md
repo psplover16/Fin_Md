@@ -3,7 +3,7 @@
 * JOIN 要配 `ON`，把關聯的鍵綁在一起。
 
 ### 基本 JOIN
-* **JOIN**：交集，只找配對的
+* **JOIN**：交集，只找配對的,JOIN TABLE_NAME ON 條件
   ```sql
   SELECT user_id FROM orders JOIN users ON orders.user_id = users.id
   ```
@@ -48,7 +48,7 @@ WHERE d.所在城市 = '台北';
 ```sql
 SELECT 名字 
 FROM 員工表 
-WHERE 部門ID IN (
+WHERE 部門ID IN ( -- IN 是否「屬於一組值」
     SELECT 部門ID 
     FROM 部門表 
     WHERE 所在城市 = '台北'
@@ -64,7 +64,7 @@ JOIN (
     SELECT 部門ID 
     FROM 部門表 
     WHERE 所在城市 = '台北'
-) d 
+) AS d 
     ON e.部門ID = d.部門ID;
 ```
 * **說明**：將部門表瘦身成「台北專屬虛擬表」，然後將「台北專屬虛擬表」與原本的員工表做 JOIN。

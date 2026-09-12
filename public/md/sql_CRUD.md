@@ -31,18 +31,22 @@ SELECT
     AVG(price * amount),  -- 算出「平均一筆訂單」的總花費是多少。    
     MAX(price * amount),  -- 找出今天「單筆消費金額最高」的那一單是多少錢（尋找傳說中的大戶！）。
     MIN(price * amount) -- 找出今天「單筆消費金額最低」的那一單是多少錢。
-
-FROM orders                            -- 4-1. 從 orders 表格撈資料
-JOIN users ON orders.user_id = users.id -- 4-2. 把 orders 跟 users 這兩張表併在一起，牽線的橋樑是orders裡的 user_id 要等於會員表裡的 id
-WHERE category = '3C' AND status = 'Completed' -- 5. 【第一關篩選】：在分組前，先剔除不要F的資料
-
-GROUP BY user_id, category                       -- 6. 【分組】：先用 user_id 分組，再根據user_id分出來的各組別內部依照 category分組
-HAVING total_spent >= 1500 AND total_spent < 3000    -- 7. 【第二關篩選】：在分組計算後，只保留總花費大於 1500 且 小於3000 的群組
+-- 4-1. 從 orders 表格撈資料
+FROM orders          
+-- 4-2. orders 跟 users 合併，orders.user_id要等於users.id才顯示                  
+JOIN users ON orders.user_id = users.id
+-- 5. 【第一關篩選】：在分組前，先剔除不要的資料
+WHERE category = '3C' AND status = 'Completed'
+-- 6. 【分組】：先用 user_id 分組，再根據user_id分出來的各組別內部依照 category分組
+GROUP BY user_id, category   
+-- 7. 【第二關篩選】：在分組計算後，只保留總花費大於 1500 且 小於3000 的群組                    
+HAVING total_spent >= 1500 AND total_spent < 3000
 -- ASC = Ascending (升序 / 由小到大)，如果ORDER BY 不加，預設是ASC
 -- DESC = Descending (降序(down) / 由大到小)
-ORDER BY total_spent DESC, user_id ASC              -- 8. 【排序】：依照總花費由高到低 (DESC) 排序。後面那個欄位，只有在前面平手時才會上場
+-- 8. 【排序】：依照總花費由高到低 (DESC) 排序。後面那個欄位，只有在前面平手時才會上場
+ORDER BY total_spent DESC, user_id ASC            
 LIMIT 3;                               -- 9. 【限制筆數】：只取前 3 名
--- LIMIT 3, 4; -- (表示LIMIT 3 OFFSET 4，跳過前 4 筆資料，然後往後抓 3 筆(從1開啟，而非0))
+-- LIMIT 3, 4; -- (表示LIMIT 4 OFFSET 3，跳過前 3 筆資料，然後往後抓 4 筆(從1開啟，抓4~7))
 ```
 
 ---
@@ -54,8 +58,8 @@ LIMIT 3;                               -- 9. 【限制筆數】：只取前 3 �
 ```sql
 UPDATE orders
 SET 
-    status = 'Canceled',               -- 修改第一個欄位，賦予新字串
-    price = 0,                         -- 修改第二個欄位，賦予數字 0 (欄位之間用逗號 , 隔開)
+    status = 'Canceled'
+    price = 0,                         -- 欄位之間用逗號 , 隔開
     amount = amount - 1                -- 可以在 SET 裡面直接做數學運算 (將原本的數量減 1)
 WHERE user_id = 102 AND status = 'Pending'; -- 若省略 WHERE，會修改「整張表所有列」
 ```
