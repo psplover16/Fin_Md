@@ -117,6 +117,12 @@
       <li>
         <router-link to="/read/sql_join">4-9. 多表連接</router-link>
       </li>
+      <li>
+        <router-link to="/read/sql_tclDo">4-11-2. tcl實作</router-link>
+      </li>
+      <li>
+        <router-link to="/read/noSql2">4-11. noSql2</router-link>
+      </li>
     </ul>
   </div>
 </template>
