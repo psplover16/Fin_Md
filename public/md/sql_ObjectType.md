@@ -124,7 +124,10 @@ BEGIN
     IF NEW.Salary != OLD.Salary THEN
         INSERT INTO AuditLog (ActionText, ActionTime) 
         -- 利用 OLD.Salary 抓出原本的薪水，利用 NEW.Salary 抓出改完的薪水
-        VALUES (CONCAT('員工 ', NEW.EmpID, ' 薪水從 ', OLD.Salary, ' 變為 ', NEW.Salary), CURRENT_TIMESTAMP);
+        VALUES (
+            CONCAT('員工 ', NEW.EmpID, ' 薪水從 ', OLD.Salary, ' 變為 ', NEW.Salary),
+            CURRENT_TIMESTAMP
+        );
     END IF;
 END;
 ```
