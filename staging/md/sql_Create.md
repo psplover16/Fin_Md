@@ -82,12 +82,12 @@ CREATE TABLE student_profile (
   gender      CHAR(1)      DEFAULT 'F' CHECK (gender IN ('M', 'F')),
   score       DECIMAL(5,2) DEFAULT 0 CHECK (score BETWEEN 0 AND 100),
 
-  -- 【FOREIGN KEY (外來鍵約束)】: 建立兩張表格之間的關聯。
-  --  本表的 `student_id` 欄位，其值必須存在於另一張父表 `student` 的 `id` 欄位中，確保「沒有憑空捏造學生」。
-  -- 【ON DELETE 行為設定】: 決定當父表 (student) 中的某一筆學生資料被刪除時，這張子表 (student_profile) 該如何應對：
-  --   1. CASCADE：連動刪除（父表資料刪除了，這張表裡的對應資料也自動跟著一起刪除）。
-  --   2. SET NULL：設為空值（父表資料刪除了，這張表裡的 student_id 會變成 NULL，但前提是該欄位沒有 NOT NULL 約束）。
-  --   3. RESTRICT：限制刪除（只要這張子表裡還有該學生的資料，資料庫就會「禁止」你刪除父表的那筆學生資料，這也是預設行為）。
+--【FOREIGN KEY (外來鍵約束)】: 建立兩張表格之間的關聯。
+  -- 本表的 `student_id` 欄位，其值必須存在於另一張父表 `student` 的 `id` 欄位中，確保「沒有憑空捏造學生」。
+--【ON DELETE 行為設定】:決定當父表(student)中的某一筆學生資料被刪除時，這張子表(student_profile)該如何應對：
+  -- 1.CASCADE：連動刪除(父表資料刪除了，這張表裡的對應資料也自動跟著一起刪除)。
+  -- 2.SET NULL：設為空值(父表資料刪除了，這張表裡的 student_id 會變成 NULL，但前提是該欄位沒有 NOT NULL約束)
+  -- 3.RESTRICT：限制刪除(只要這張子表裡還有該學生的資料，資料庫就會「禁止」你刪除父表的那筆學生資料，預設行為)
   FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE CASCADE
 );
 ```
